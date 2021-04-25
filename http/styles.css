@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Merriweather&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
+html, body {
+    background-color: #eeeeee;
+    color: #222;
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.42
+}
+
+body {
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 100px;
+}
+
+h1, h2, h3 {
+    color: black;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-family: "Merriweather", serif;
+    text-align: center;
+    font-size: 40pt;
+}
+
+subh {
+    font-family: "Merriweather", serif;
+    text-align: center;
+    font-size: 30pt;
+    display: block;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    font-family: "Kanit", sans-serif;
+}
+
+.nav-right {
+    float: right
+}
+
+nav > a {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    margin-top: auto;
+    line-height: 4;
+    float: left;
+}
+
+nav > a > img {
+    height: 36px;
+}
+
+header > hr {
+    width: 90%;
+}
+
+footer > hr {
+    width: 90%;
+    margin-top: 80px;
+}
+
+footer {
+    text-align: center;
+}
+
+nav {
+    display: block;
+    height: 70px;
+}
+
+hr {
+    width: 40%;
+    margin-bottom: 50px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    max-width: 78%;
+    height: auto;
+}
+
+sub {
+    font-style: italic;
+    text-align:center;
+    display: block;
+}
+
+@media only screen and (min-width: 800px) {
+
+    ul.top {
+        display: flex;
+    }
+
+    .top li {
+        flex: 1 1 auto;
+        display: inline-block;
+    }
+
+}
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 28pt;
+    }
+    subh {
+        font-size: 10pt;
+    }
+    nav {
+        text-align: center;
+        display: block;
+        line-height: 1;
+        width: 100%;
+    }
+    
+    .nav-right {
+        float: left;
+    }
+}
