@@ -10,7 +10,7 @@ python3 make-blog-index.py "$BLOG_PREFIX" $BLOG_FILES
 
 for p in $PAGES; do
     echo "$p"
-    ./make-page.sh "src/$p" > "http/$p"
+    cat "src/tmp-header.html" "src/$p" "src/tmp-footer.html" > "http/$p"
 done
 
 ./make-page.sh "src/tmp-blog-post.html" > "$BLOG_TEMPLATE"
