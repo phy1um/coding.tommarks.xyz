@@ -27,7 +27,7 @@ def parse_fm(l):
 
 posts = []
 for tgt in sys.argv[2:]:
-    print("Processing",tgt")
+    print("Processing",tgt)
     fm_lines = read_fm(tgt)
     fields = parse_fm(fm_lines)
     fields["path"] = tgt
@@ -40,6 +40,6 @@ with open(target, "w") as f:
         path_t = post['path'].split("/")[-1]
         name = path_t.split(".")[0]
         prefixed_name = blog_prefix + name + ".html"
-        f.write("".join("<li>({post['date']}) <a href='",prefixed_name,"'>",post['title'],"</a></li>")
+        f.write("".join(["<li>({post['date']}) <a href='",prefixed_name,"'>",post['title'],"</a></li>"]))
     f.write("</ul></section>")
 
