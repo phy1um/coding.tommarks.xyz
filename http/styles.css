@@ -45,7 +45,7 @@ h2 {
     float: right
 }
 
-nav > a {
+nav > div> a {
     margin-left: 8px;
     margin-right: 8px;
     padding-top: 10px;
@@ -55,7 +55,7 @@ nav > a {
     float: left;
 }
 
-nav > a > img {
+nav > div> a > img {
     height: 36px;
 }
 
@@ -108,6 +108,12 @@ sub {
         display: inline-block;
     }
 
+    #wide-nav-cont {
+        display: block;
+    }
+    #narrow-nav-cont {
+        display: none;
+    }
 }
 
 @media (max-width: 900px) {
@@ -118,13 +124,19 @@ sub {
         font-size: 10pt;
     }
     nav {
-        text-align: center;
-        display: block;
         line-height: 1;
-        width: 100%;
+        height:auto;
+        text-align: left;
     }
-    
+
     .nav-right {
         float: left;
+    }
+
+    #wide-nav-cont {
+        display: none;
+    }
+    #narrow-nav-cont {
+        display: block;
     }
 }

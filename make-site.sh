@@ -2,6 +2,9 @@ PAGES="blog.html contact.html index.html projects.html thanks.html"
 BLOG_FILES="src/blog/*.md"
 BLOG_PREFIX="blog-"
 BLOG_TEMPLATE="blog-template.html"
+if [ -z $PANDOC ]; then
+    PANDOC="pandoc"
+fi
 
 python3 make-blog-index.py "$BLOG_PREFIX" $BLOG_FILES
 
