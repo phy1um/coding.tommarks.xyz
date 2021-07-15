@@ -5,12 +5,12 @@ BLOG_TEMPLATE="blog-template.html"
 
 function test_in_path {
     echo " ------------- "
-    echo "   Locating $1"
+    echo "   Locating $1..."
     which $1 > /dev/null 2>&1
     if [ $? == 0 ]; then
-        echo "Found $1 @ $(which $1)"
-        echo "Version:"
-        $2
+        echo "    Found $1 @ $(which $1)"
+        vstr=$($1 $2)
+        echo "    Version: $vstr"
     else
         echo " /!\\ NOT FOUND /!\\"
     fi
@@ -23,8 +23,8 @@ function log_init_status {
     echo " > source: $REPOSITORY_URL"
     echo " > branch: $BRANCH"
     echo " > commit: $COMMIT_REF"
-    test_in_path "python" "python --version"
-    test_in_path "pandoc" "pandoc -v"
+    test_in_path "python3" "--version"
+    test_in_path "pandoc" "-v"
 }
 
 function make_page {
@@ -44,7 +44,7 @@ echo
 echo " === Making Main Pages === "
 
 for p in $PAGES; do
-    echo "Building page: $p"
+    echo " > Building page: $p"
     make_page "src/$p" > "http/$p"
 done
 
@@ -54,7 +54,7 @@ echo " === Making Blog === "
 make_page "src/tmp-blog-post.html" > "$BLOG_TEMPLATE"
 
 for p in $BLOG_FILES; do
-    echo "Building blog post: $p"
+    echo " > Building blog post: $p"
     fn=$(basename -s .md $p)
     $PANDOC --template "$BLOG_TEMPLATE" $p > "http/$BLOG_PREFIX$fn.html"
 done
