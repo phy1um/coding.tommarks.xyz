@@ -40,6 +40,6 @@ with open(target, "w") as f:
         path_t = post['path'].split("/")[-1]
         name = path_t.split(".")[0]
         prefixed_name = blog_prefix + name + ".html"
-        f.write("".join(["<li>({post['date']}) <a href='",prefixed_name,"'>",post['title'],"</a></li>"]))
+        f.write("".join(["<li>(",post['date'],") <a href='",prefixed_name,"'>",post['title'],"</a></li>"]))
     f.write("</ul></section>")
 
