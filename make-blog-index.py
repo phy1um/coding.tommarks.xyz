@@ -6,7 +6,7 @@ def read_fm(f):
         lines = []
         rd = fi.readline().strip()
         if rd != "---":
-            raise Exception(f"Markdown file does not contain frontmatter. \nExpected \"---\", got: \"{rd}\"")
+            raise Exception("Markdown file does not contain frontmatter. \nExpected \"---\", got: \"" + rd + "\"")
         for line in fi:
             stripped = line.strip()
             if stripped == "...":

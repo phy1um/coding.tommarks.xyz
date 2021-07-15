@@ -38,6 +38,7 @@ fi
 log_init_status
 
 echo " === Building Blog Index === "
+echo "   Blog posts found: $BLOG_FILES"
 python3 make-blog-index.py "$BLOG_PREFIX" $BLOG_FILES
 
 echo
