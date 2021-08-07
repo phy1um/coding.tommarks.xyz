@@ -3,16 +3,19 @@ BLOG_FILES="src/blog/*.md"
 BLOG_PREFIX="blog-"
 BLOG_TEMPLATE="blog-template.html"
 
+PATH_FAILED=0
+
 function test_in_path {
     echo " ------------- "
     echo "   Locating $1..."
     which $1 > /dev/null 2>&1
     if [ $? == 0 ]; then
         echo "    Found $1 @ $(which $1)"
-        vstr=$($1 $2)
+        vstr=$($1 $2 | head -n 1)
         echo "    Version: $vstr"
     else
         echo " /!\\ NOT FOUND /!\\"
+        PATH_FAILED=1
     fi
 
 }
@@ -36,7 +39,13 @@ if [ -z $PANDOC ]; then
 fi
 
 log_init_status
+if [ $PATH_FAILED == 1 ]; then
+  echo "FATAL: Could not find required tools in path"
+  exit 1
+fi
 
+echo
+echo
 echo " === Building Blog Index === "
 echo "   Blog posts found: $BLOG_FILES"
 python3 make-blog-index.py "$BLOG_PREFIX" $BLOG_FILES
