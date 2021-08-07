@@ -1,4 +1,4 @@
-PAGES="blog.html contact.html index.html projects.html thanks.html"
+PAGES="blog.html contact.html index.html projects.html thanks.html patreon.html"
 BLOG_FILES="src/blog/*.md"
 BLOG_PREFIX="blog-"
 BLOG_TEMPLATE="blog-template.html"
