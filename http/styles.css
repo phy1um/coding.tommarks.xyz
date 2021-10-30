@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Merriweather&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700&display=swap');
 
 html, body {
-    background-color: #eeeeee;
-    color: #222;
+    background-color: #1b1b1b;
+    color: #efefef;
     font-family: "Open Sans", sans-serif;
     line-height: 1.42
 }
@@ -14,7 +15,8 @@ body {
 }
 
 h1, h2, h3 {
-    color: black;
+    color: #fff;
+    font-family: "Barlow", sans-serif;
 }
 
 header {
@@ -22,23 +24,29 @@ header {
 }
 
 h1 {
-    font-family: "Merriweather", serif;
+    font-family: "Barlow", serif;
     text-align: center;
-    font-size: 40pt;
+    font-size: 60pt;
+    line-height: 1;
+}
+
+h2 {
+  font-size: 38pt;
+  line-height:1;
+}
+
+a {
+  color: #f49aff;
 }
 
 subh {
-    font-family: "Merriweather", serif;
+    font-family: "Barlow", serif;
     text-align: center;
     font-size: 30pt;
     display: block;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-}
-
-h2 {
-    font-family: "Kanit", sans-serif;
 }
 
 .nav-right {
