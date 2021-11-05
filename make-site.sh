@@ -1,4 +1,4 @@
-PAGES="blog.html contact.html index.html projects.html thanks.html patreon.html"
+PAGES="contact.md index.md projects.md thanks.md patreon.md"
 BLOG_FILES="src/blog/*.md"
 BLOG_PREFIX="blog-"
 BLOG_TEMPLATE="blog-template.html"
@@ -54,9 +54,17 @@ echo
 echo " === Making Main Pages === "
 
 for p in $PAGES; do
-    echo " > Building page: $p"
-    make_page "src/$p" > "http/$p"
+    base=$(basename $p .md)
+    tgt="$base.html"
+    echo " > Pandoc $p -> $tgt"
+    pandoc -f markdown -t html "src/$p" > "src/$tgt"
+    echo " > Building page: $tgt"
+    make_page "src/$tgt" > "http/$tgt"
+    rm -f "src/$tgt"
 done
+
+echo " > Building page: blog.html"
+make_page "src/blog.html" > "http/blog.html"
 
 echo
 echo " === Making Blog === "
