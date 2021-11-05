@@ -16,9 +16,16 @@ my custom Playstation 2 Lua engine which is not very mature, and encountered
 many technical problems. The final game is playable, but has some graphical issues
 and is not very fun :D
 
-* [Itch.io Page](#)
-* [Source](#)
+* [Download + Source on itch.io](https://tommarkstalkscode.itch.io/lisp-game-jam-2021-ps2-shooter)
 
+### Playstation 2 Homebrew Livestreams
+
+I stepped back to square one and started documenting my process of building 
+software for the Playstation 2, first in C and later incorporating Lua. This is
+a huge ongoing piece of work that will continue well beyond 2021, but it started
+here!
+
+* [Youtube Playlist](https://www.youtube.com/playlist?list=PLFZsvEE0TWOsFhZr-9KwLED3Rzlwra_Rm)
 
 ### Nim Lisp Interpreter
 
@@ -30,17 +37,20 @@ automatically generating code which binds runtime Lisp function
 arguments (in the form of a Cons-list) to variable names, possibly even
 with auto-generated type checking.
 
+* [Source (Very incomplete)](#)
+
 ![](img/2021_nimlisp.png)
 ~The\ very\ verbose\ output\ of\ my\ Lisp\ interpreter\ proving\ it\ is\ capable\ of\ basic\ addition~
 
 ### 7 Day RogueLike 2021
 
-* [Itch.io Page](#)
 
-I attempted to make a small roguelike platformer in 7 days. Overall I
-didn't succeed in making a roguelike, but I did make a functional game
-with random levels and have continued to make small improvements since
-the original 7 day deadline.
+I attempted to make a small roguelike platformer in 7 days for a game jam. 
+Overall I didn't succeed in making a roguelike, but I did make a functional game
+with random levels. I'm happy with what I achieved in the timeframe,
+however as it isn't really a roguelike I did not submit it to the jam.
+
+* [Download on itch.io](https://tommarkstalkscode.itch.io/0x5007)
 
 ![](img/2021_7drl1.png){height="320"}
 ![](img/2021_7drl2.png){height="320"}
@@ -56,6 +66,8 @@ I wrote a simple Lisp interpreter in C based on McCarthy's 1959 paper.
 It has the minimal set of functions to be an interpreter and a simple
 interface for binding C functions to be called from Lisp. It has no
 garbage collection so is quite limited in what it can run.
+
+* [Source (Incomplete)](#)
 
 ### Playstation 2 Graphics Synthesizer Buffer/DMA Utilities
 
@@ -111,6 +123,8 @@ backend, which was a simple NodeJS app storing data in MongoDB.
 To learn more about lower level programming I dove into C and built
 simple games using the SDL2 library.
 
+* [Source](#)
+
 ![One of my games, a screen filled with small atari-inspired
 characters](img/2016_cgame1.png)
 ~A\ test\ of\ displaying\ many\ interracting\ characters~ ![Screenshot
@@ -123,13 +137,13 @@ of \'Shark Game\'](img/2016_cgame2.png)
 
 ### Music Playlist Generator
 
-My first paid programming project was for my local doctor\'s clinic,
+My first paid programming project was for my local doctor's clinic,
 building a system to randomly generate Windows Media Player playlists
 from a large collection of music. This was my first project where I had
 to gather requirements myself. I had to work under tight restrictions
 and understand data structures to effectively track which songs had been
 considered already while selecting a variety of genres and artists,
-based on song metadata as well as a song\'s filesystem path. The system
+based on song metadata as well as a song's filesystem path. The system
 worked well and was in use years later when I visited the same clinic.
 :::
 
@@ -153,11 +167,12 @@ larger system.
 ### Java Games
 
 Simple Java games mostly from a top-down perspective. My first Java game
-\"Text Game\" was console based, but later ported to a graphical game. I
+"Text Game" was console based, but later ported to a graphical game. I
 built some simple platformers, but never finished anything other than
 example levels. I spent a lot of time thinking about structuring my code
-into \"engine\" and \"game\" sections, which enabled me to share a lot
+into "engine" and "game" sections, which enabled me to share a lot
 of code between projects.
+
 :::
 
 ::: section
@@ -166,7 +181,7 @@ of code between projects.
 ### GameMaker Games
 
 I started programming with GameMaker, first with the drag-and-drop
-interface but eventually writing code in \"GML\", a Java-like language.
+interface but eventually writing code in "GML", a Java-like language.
 These games impressed my school friends, but are very primitive.
 
 ![](img/2007_gamemaker.png){height="480"}
