@@ -53,6 +53,10 @@ subh {
     float: right
 }
 
+.nav-right > img {
+  filter: invert(100%);
+}
+
 nav > div> a {
     margin-left: 8px;
     margin-right: 8px;
@@ -148,3 +152,4 @@ sub {
         display: block;
     }
 }
+
