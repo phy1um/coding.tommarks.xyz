@@ -56,7 +56,7 @@ with open(target, "w") as f:
         except:
             pass
         time = datetime.datetime.strptime(post['date'], "%Y-%m-%d")
-        feed.addItem(post['title'], "/" + prefixed_name, about, rss.toRCF822(time))
+        feed.add_item(post['title'], "/" + prefixed_name, about, rss.toRCF822(time))
     f.write("</ul></section>")
 
 with open("http/feed.xml", "w") as f:
