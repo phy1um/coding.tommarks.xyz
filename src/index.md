@@ -18,7 +18,7 @@ interest in computers growing up, especially vibrant worlds found in
 Clank* and *Jak and Daxter*. I obtained a Bachelor's Degree in Computer
 Science in 2019, and have worked mostly with Java and Python, as well as
 C, Golang and Javascript. I have also programmed in Lua, Groovy and some
-Lisp diallects. I would love an excuse to improve my Haskell skills.
+Lisp dialects. I would love an excuse to improve my Haskell skills.
 
 When I'm not programming I enjoy gaming. I occasionally compete in and
 commentate Quake tournaments, but that [has its own
@@ -41,7 +41,7 @@ a saxophone in years.
 ::: section
 ## website
 
-This website is hand written Makrdown run through a simple static site
+This website is hand written Markdown run through a simple static site
 generator script. I wrote [a blog post about building
 it](blog-hello-world.html) if you want to see behind the curtain. I like
 simple sites with minimal JS that focus on text rather than being
