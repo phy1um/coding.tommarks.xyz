@@ -18,18 +18,18 @@ interest in computers growing up, especially vibrant worlds found in
 Clank* and *Jak and Daxter*. I obtained a Bachelor's Degree in Computer
 Science in 2019, and have worked mostly with Java and Python, as well as
 C, Golang and Javascript. I have also programmed in Lua, Groovy and some
-Lisp diallects. I would love an excuse to improve my Haskell skills.
+Lisp dialects. I would love an excuse to improve my Haskell skills.
 
 When I'm not programming I enjoy gaming. I occasionally compete in and
 commentate Quake tournaments, but that [has its own
-website.](https://gaming.tommarks.xyz) Rouguelites are my favourite
+website.](https://gaming.tommarks.xyz) Roguelites are my favourite
 singleplayer games and Spelunky 2 keeps me coming back for more. I go
 for regular walks with no goal or direction, but lots of stops to
 observe wildlife. Australia is home to lots of interesting bugs, birds
 and reptiles which keep my walks interesting. I love to cook, I
 sometimes attempt to draw or paint, and I'm slowly improving at chess.
 
-Before studying computer science I was a a performance major studying
+Before studying computer science I was a performance major studying
 classical flute at the University of Adelaide. I still love music and
 try to practice most days. My main interests are baroque composers
 (Bach, Telemann), although one of my favourite pieces is the Claude
