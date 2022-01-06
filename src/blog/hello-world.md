@@ -2,7 +2,10 @@
 title: Website Launch and How I Built It
 date: 2021-07-15
 author: Tom Marks
+updated: 2021-12-20
 ...
+
+*Updated December 2021*
 
 ## Welcome
 
@@ -56,3 +59,9 @@ such as RSS feeds.
 defined in YAML/etc to make changes and theming easier
 * Needs better HTML5 metadata, SEO
 * Blog is barebones, needs improvement
+
+## Update: RSS Feeds
+
+As of late 2021 I have added RSS feeds to this site. I wrote a simple script to generate feeds, but it is
+missing lots of quality of life. For example, I should include the post body in the feed as most blogs seem
+to do. 

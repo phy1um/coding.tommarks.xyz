@@ -106,9 +106,9 @@ local servers.
 
 ### Survey and Data Collection Platform
 
-I voulenteered to build a survey for an honors student conducting
+I volunteered to build a survey for an honors student conducting
 research at the University of Adelaide. The survey contained
-interractive sections which were outside of what is possible with survey
+interactive sections which were outside of what is possible with survey
 builders and existing survey web frameworks/libraries. My solution was
 built in HTML and Javascript, with some data pre-processing for survey
 question/activity data in Python. I also built the data collection
@@ -127,7 +127,7 @@ simple games using the SDL2 library.
 
 ![One of my games, a screen filled with small atari-inspired
 characters](img/2016_cgame1.png)
-~A\ test\ of\ displaying\ many\ interracting\ characters~ ![Screenshot
+~A\ test\ of\ displaying\ many\ interacting\ characters~ ![Screenshot
 of \'Shark Game\'](img/2016_cgame2.png)
 ~Shark\ Game\ was\ an\ arcade-style\ game\ about\ eating\ fish~
 :::
