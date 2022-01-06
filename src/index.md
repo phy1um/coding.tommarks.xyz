@@ -41,7 +41,7 @@ a saxophone in years.
 ::: section
 ## website
 
-This website is hand written Makrdown run through a simple static site
+This website is hand written Markdown run through a simple static site
 generator script. I wrote [a blog post about building
 it](blog-hello-world.html) if you want to see behind the curtain. I like
 simple sites with minimal JS that focus on text rather than being
