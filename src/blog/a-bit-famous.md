@@ -37,7 +37,7 @@ converted ~10% of those into views. People were clicking on my first video, and 
 at least one other video. I started getting a noticable uptick in subscribers, and
 was recieving ~30,000+ views in a 48 hour sliding window for over a week.
 
-*put an image here*
+![](/img/blog/yt-views.png "More than 39,000 views over 48 hours!")
 
 Naturally this feels amazing. People are clicking on my content and I've had some great engagement
 with subscriptions and/or comments.
