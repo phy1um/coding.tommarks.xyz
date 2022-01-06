@@ -13,9 +13,9 @@ but it's been amazing to get my first taste of attention on the platform.
 
 ## How I Got Here 
 
-I started making Youtube videos in 2014. I've never considered it a serious way to make money,
-and I still don't consider it a serious way to make money. I enjoy talking about things I love
-and I like the idea of making some side money from it one day.
+I started making Youtube videos in 2014. I've never considered it a serious way to make money, 
+but I enjoy sharing the things I love with the world. I like the idea of making some side money
+to get better video-making equipment and justify putting more effort into videos.
 
 My main content before 2021 was gaming focussed, mostly Quake and Arena FPS videos.
 I'm very proud of some of these videos, but the most successful release flatlined at
@@ -51,10 +51,10 @@ to see so much attention going to one of my roughest videos that doesn't represe
 
 While I'm excited to say I have had 200,000 views, there is still a lot that could be better
 about the numbers. The videos getting attention aren't my best work and they are not
-generating the engagement I want.
+generating the engagement and watch time that I want.
 
 My average view time is very low. For videos that are usually an hour or longer I am disappointed
-by how few people are watching them through. I think this is something I need to be aware of
+by how few people are watching more than a few minutes. I think this is something I need to be aware of
 in future videos - if anything is rough or awkward at the start of a stream many people *will not*
 tolerate it at all and click away from the video. I may need to edit videos and
 have higher production value to hold my viewer's attention better.
@@ -73,8 +73,8 @@ which has been widely recommended. I don't expect every video to be so widely su
 believe that I can produce more videos with the same kind of appeal in the future.
 
 ## Ambitions, Monetization
-I now qualify to monetize my videos, but I worry that because
-my engagement is quite poor putting ads on videos will drive engagement down. 
+I now qualify to monetize my videos, but because my average view duration is low I worry that
+putting ads on videos will drive engagement down.
 I do not think the monetary value of ads with my current viewership is worth
 sacrificing engagement, especially because I expect the current pattern of views is 
 temporary. While I will be creating a Patreon or other subscription/support option,
