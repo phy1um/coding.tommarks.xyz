@@ -6,6 +6,47 @@ childhood
 :::
 
 ::: section
+## 2022
+
+### Discord Bot From Scratch
+
+After discovering that the popular Python Discord library discord.py was
+no longer being maintained, I decided to do things the hard way and integrate
+with Discord myself.
+
+The bot can work with the Discord REST and Gateway (aka websocket) APIs. The
+websockets integration allows the bot to respond to events, 
+so for my use case it will add a role to a user when they react to a specific message.
+
+The bot will eventually manage my Discord server, but there are a few bugs to squash before then!
+
+* [Source (very WIP)](https://github.com/phy1um/tmtc-discord-bot)
+
+### Playstation 2 Homebrew - 2D Draw APIs, Math and Library Improvements
+
+In early 2022 I have continued work on my Playstation 2 homebrew library. 
+I fixed many issues with the 2D renderer's texturing, and extended the renderer 
+to support colour palettes in PS2 hardware. The renderer now has a C backend 
+rather than just pure Lua (the backend used can be configured at startup) which is much 
+faster, so it can now render way more geometry while maintaing a reasonable FPS.
+
+I added Lua bindings for doing vector and matrix math, which was needed to
+start creating games using the library. The math APIs also
+pushed me to add unit tests. I can't run the PCSX2 emulator "headless"
+in my CI pipeline yet, so these tests are run on program startup for now.
+
+Overall the library is a lot more stable now, and can definitely support games.
+I just need to write a lot of documentation so that other people can use it!
+
+* [Source](https://github.com/phy1um/ps2-homebrew-livestreams)
+* [PS2 Homebrew Youtube Playlist](https://www.youtube.com/playlist?list=PLFZsvEE0TWOsFhZr-9KwLED3Rzlwra_Rm)
+
+![](img/2022_ps2tris.png)
+~A\ geometry\ stress\ test\ from\ my\ library\ examples~
+
+:::
+
+::: section
 ## 2021
 
 ### Lisp Game Jam Attempt - Failed Playstation 2 Dungeon Crawler
@@ -37,7 +78,7 @@ automatically generating code which binds runtime Lisp function
 arguments (in the form of a Cons-list) to variable names, possibly even
 with auto-generated type checking.
 
-* [Source (Very incomplete)](#)
+Sadly I have lost the source for this :( 
 
 ![](img/2021_nimlisp.png)
 ~The\ very\ verbose\ output\ of\ my\ Lisp\ interpreter\ proving\ it\ is\ capable\ of\ basic\ addition~
@@ -67,7 +108,7 @@ It has the minimal set of functions to be an interpreter and a simple
 interface for binding C functions to be called from Lisp. It has no
 garbage collection so is quite limited in what it can run.
 
-* [Source (Incomplete)](#)
+* [Source (Incomplete)](/stuff/lispimpl.tar.xz)
 
 ### Playstation 2 Graphics Synthesizer Buffer/DMA Utilities
 
