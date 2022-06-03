@@ -8,6 +8,22 @@ childhood
 ::: section
 ## 2022
 
+### Pew (a small Playstation 2 game)
+
+A tiny asteroids-inspired shooter for the Playstation 2. This game
+mostly exists to test the 2D functionality of the core engine, 
+and consuming my own engine forced me to make many improvements to
+the code. Despite this game being simple and ugly, it has provided
+a lot of value towards my larger goal of building Playstation 2 games.
+
+![](img/2022_pew.png)
+~A\ typical\ gameplay\ scene\ in\ Pew~
+
+* [Game Source](https://github.com/phy1um/playstation2-minis)
+* [Engine Source](https://github.com/phy1um/ps2-homebrew-livestreams)
+* [PS2 Homebrew Youtube Playlist](https://www.youtube.com/playlist?list=PLFZsvEE0TWOsFhZr-9KwLED3Rzlwra_Rm)
+* [Download on Itch.io](https://tommarkstalkscode.itch.io/ps2-minis)
+
 ### Discord Bot From Scratch
 
 After discovering that the popular Python Discord library discord.py was
