@@ -1,10 +1,10 @@
 ---
-title: Train Travel, Making Art
+title: Art Trip 2022
 date: 2022-08-04
 author: Tom Marks
 ...
 
-## My Art Trip, 2022
+## The Travelling Artist
 
 In late July I was fortunate to have a week and a half between jobs, so I took the chance to escape the city.
 I was pretty run down from 2.5 years of working through lockdowns and health issues, and all of my time off since 2020
@@ -20,6 +20,8 @@ I have no idea what I'm doing with oil pastels, I bought them on a whim, but I e
 work with them on this trip. I was glad I experimented, I ended up creating a few pictures that I'm happy with,
 even if everything is still really rough. I definitely feel more confident in creating art with my spare time
 at home now.
+
+## My Art
 
 Here are a few of the works I created, in roughly chronological order:
 
