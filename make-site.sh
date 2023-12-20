@@ -1,4 +1,5 @@
 PAGES="contact.md index.md projects.md thanks.md patreon.md"
+PROJECT_FOLDER="src/project"
 BLOG_FILES="src/blog/*.md"
 BLOG_PREFIX="blog-"
 BLOG_TEMPLATE="blog-template.html"
@@ -62,6 +63,9 @@ for p in $PAGES; do
     make_page "src/$tgt" > "http/$tgt"
     rm -f "src/$tgt"
 done
+
+echo " === Copying Projects (static pages) ==="
+cp -r ${PROJECT_FOLDER} "http"
 
 echo " > Building page: blog.html"
 make_page "src/blog.html" > "http/blog.html"

@@ -1,0 +1,14 @@
+{
+  "name": "webg",
+  "version": "0.1.0",
+  "files": [
+    "webg_bg.wasm",
+    "webg.js",
+    "webg.d.ts"
+  ],
+  "module": "webg.js",
+  "types": "webg.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

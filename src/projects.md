@@ -6,6 +6,16 @@ childhood
 :::
 
 ::: section
+## 2023
+
+### Crab Pong
+
+Learning Rust by experimenting with a small web game.
+
+* [Source](#)
+* [Try it!](/project/crab_pong)
+
+::: section
 ## 2022
 
 ### Pew (a small Playstation 2 game)

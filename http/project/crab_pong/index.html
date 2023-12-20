@@ -1,0 +1,47 @@
+<html>
+  <body>
+    <div id="game"></div>
+    <p>
+    Control the padels with w/s and i/k. Score points, beat your friend. There is no AI.
+    </p>
+    <p><i>Created by Tom Marks - <a href="https://coding.tommarks.xyz">visit my website</a></i></p>
+  </body>
+  <script src="render.js"></script>
+  <script type="module">
+    import init, {Game, GameAction} from "./webg.js";
+    (async () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 800;
+      canvas.height = 500;
+      canvas.id = "canvas";
+      document.getElementById("game").appendChild(canvas);
+      const gfx = new GFXManager(canvas);
+      await init();
+      const g = new Game();
+      g.bind_action("w", GameAction.Player1Up);
+      g.bind_action("s", GameAction.Player1Down);
+      g.bind_action("i", GameAction.Player2Up);
+      g.bind_action("k", GameAction.Player2Down);
+      g.bind_action("0", GameAction.ResetBall);
+      g.init(gfx);
+      let then = 0;
+      function drawLoop(now) {
+        const dt = (now - then)/1000; 
+        then = now;
+        g.tick(dt, gfx);
+        g.draw(gfx);
+        requestAnimationFrame(drawLoop);
+      }
+      requestAnimationFrame(drawLoop);
+
+      document.addEventListener("keydown", (e) => {
+        g.keydown(e.key);
+      });
+      document.addEventListener("keyup", (e) => {
+        g.keyup(e.key);
+      });
+
+    })();
+  </script>
+
+</html>
