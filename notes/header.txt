@@ -1,0 +1,14 @@
+
+these are the daily project notes of Tom Marks. not designed for
+public consumption but posted online for the sake of it, maybe someone else
+will find this interesting :D
+
+this is a plaintext document. markdown is cool but not what i need here.
+
+ ::: legend :::
+|  -  | a note/thought/etc
+|  +  | a feature that was added
+|  *  | a bug that was fixed/small improvements 
+|  !  | a bug was found but not fixed
+
+

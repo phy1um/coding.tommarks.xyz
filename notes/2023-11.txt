@@ -1,0 +1,149 @@
+
+================
+      2023-11-22
+================
+
+---------------------
+rust webgl game stuff
+---------------------
++ colliders use flags and masks instead of single "type"
+
+
+================
+      2023-11-20
+================
+
+---------------------
+rust webgl game stuff
+---------------------
++ entity vs entity collision working in most basic way
+  * fixed entity colliders not updating their position before adding to the "all_colliders" list.
+    this caused everything to be at 0,0 for the first frame and all collide with eachother!
+  ! AABB vs AABB collision is not correct, the entire box is not a hit area
+  ! AABB vs AABB fails when one box is entirely inside the other
+
+- future collision improvements:
+  - factor in direction of movement to work out exact point of impact and normal @ impact
+  - use bitmasks for collision types (eg can be both damaging and solid)
+
+
+================
+      2023-11-17
+================
+
+---------------------
+rust webgl game stuff
+---------------------
++ add collision system for entity vs tilemap
+  ! currently has "wobble"
+  ! entities move inside tiles slightly because of when collision is resolved
+    - doing this with ECS is hard. trying to avoid player querying
+      the tilemap every frame/move. if i can do this "async" it
+      will be very clean, but needs careful design
+* cleaned up many small warnings, removed unused code
+* CollisionResults give a hit (X, Y), plus normal to the collision
+  - my theory is this will help resolve, as long as an entity remembers its
+    previous (X, Y) before the move. this should allow an entity to resolve 
+    everything when it updates? eg player falling sees a normal that points
+    mostly up and knows this resolves to meaning they are "on the ground".
+
+
+================
+      2023-11-16
+================
+
+---------------------
+rust webgl game stuff
+---------------------
+- got player working with simple entities that contain many Option<T>s, lots of cleanup left
+  - `&mut self` methods are kind of evil with this interior mutability?
+  - thinking about each system as its own top level concept is clean
+  - there are definitely problems i will encounter
+- weirdly still haven't had to use a lifetime :D
+
+
+================
+      2023-11-15
+================
+
+---------------------
+rust webgl game stuff
+---------------------
+- borrow checker is pain, interior mutability is pain
+- watched a cool talk, it made me just want to use specs: https://www.youtube.com/watch?v=aKLntZcp27M
+  - @ 21:00 she specifically calls out being confused why you need refcell everywhere lol
+  - @ 26:50 she gives an example that is a good "stopping point" this for now, before i go full ECS
+
+
+================
+      2023-11-14  
+================
+
+---------------------
+rust webgl game stuff
+---------------------
+- how do i pass RefCells around without moving the values?
+  is &RefCell ok? it must be. but can i make multiple RefCells that
+  reference the same thing? can i "shallow clone" a RefCell?
+- i think this is too much refcell
+
+
+================
+      2023-11-13
+================
+
+---------------------
+rust webgl game stuff
+---------------------
+- unpicked types for entities
+  - kind of? still have problem where looping over entities in scene borrows the scene
+  - so i can't pass the scene into a `tick` method or anything else..
+- overall the structure is:
+ Scene -> Entity -> { Option(Ticker), Option(Collider), Option(Drawer) }
+ When upating a scene, update each ticker and "resolve" each collider
+ When drawing a scene, draw the geometry, then each drawer (eventually the geometry
+  should roll up as a component)
+- i should probaby bite the bullet and make this feel more like real ECS, or maybe use
+  an existing library
+
+-----------
+misc/random
+-----------
+- idea for procgen inspired by wasps collaborating to build a nest without a plan
+  - agents with simple "programs" that can walk a grid, sample surrounding positions, and place tiles
+  - very simple branchless bytecode for agents
+  - branchless to support simpler generation of those bytecode programs!!!
+  - some FLAGS register for each agent
+    - FLAGS[stop] set means walk commands are ignored
+    - FLAGS[noplace] set means placing tiles is ignored
+    - etc for other actions
+    - set and unset flags based on comparisons runs the same logic with different outcomes based on state
+  - agents can spawn new agents, but only up to a generation limit (which is always inherited and cannot change)
+    - new generation is old generation+1, new limit is always old limit
+    - spawning a new agent fails if generation+1 > limit
+  - agents always run their entire bytecode program 
+  - eventually could generate agent programs etc?
+
+
+================
+      2023-11-06
+================
+
+---------------------
+rust webgl game stuff
+---------------------
+- thinking about how to do entities
+  - nested mutable borrows in nested structures is dangerous
+  - all designs go in circles, some indirection needed
+  - is this where I need Box/Ref/etc? Is Rc appropriate?
+  - eg. when the updating entity needs to reference the owning scene in its tick:
+
+pub fn tick(&mut self, dt: f32) {
+  self.player.tick(dt, &self); <--- cannot borrow &self as mutable or immutable
+                                    here due to &mut self!!!
+}
+  - researching:
+example of this exact problem: https://tomassedovic.github.io/roguelike-tutorial/part-5-combat.html 
+book for roguelike with ECS (specs): https://bfnightly.bracketproductions.com/rustbook/chapter_2.html
+
+

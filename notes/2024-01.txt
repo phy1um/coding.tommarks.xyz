@@ -1,0 +1,51 @@
+
+================
+      2024-01-09
+================
+
+-----------
+discord bot
+-----------
+- removed janky event/annotation system, at the cost of manual work
+- for some reason it dies after a while
+- i'm not convinced the config hierarchy is a good idea but we'll roll with it for now
+- need some kind of cache for certain api calls
+- maybe need some higher level methods on the API
+- conclusion: still not able to serve my needs yet
+
+
+================
+      2024-01-07
+================
+
+--------
+simpleVM
+--------
++ wrote basic "assembler"
++ VM loads binaries from file
++ implement SIGNAL instruction for handling extra events (like halting machine)
++ build first pass of "assembler" to turn a file containing bytes eg `04 AF` into
+  a binary file with those values
+- rewrite some Option/Result code to use `.ok_or` which is amazing
+
+
+================
+      2024-01-04
+================
+
+--------
+simpleVM
+--------
+- 16-bit virtual machine in rust
++ made a working VM that can add numbers from stack
+- code written as library, extra binaries defined in Cargo.toml to share
+- very simple code so far, no lifetimes?
+- opcode enum is messy, maybe i'm looking for too much magic
+  - i have an Instruction type that has an op PLUS the data it operates on
+  - eg `AddRegisters(register1, register2)`
+  - this is nice because when we implement the logic for each instruction we don't
+    have to think about decoding bits.
+  - however using this enum to decode opcodes is SO messy
+  - also it means that reordering the enum is an ABI change? this is bad
+  - solution: eventually write a bit map from u8 -> Opcode, then match Opcode -> Instruction
+

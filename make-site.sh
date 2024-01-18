@@ -81,6 +81,9 @@ for p in $BLOG_FILES; do
     $PANDOC --template "$BLOG_TEMPLATE" $p > "http/$BLOG_PREFIX$fn.html"
 done
 
+echo "=== Building notes === "
+cd notes && bash build.sh ../notes.txt
+
 echo
 echo
 echo " =========="
