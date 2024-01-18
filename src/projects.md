@@ -8,6 +8,12 @@ childhood
 ::: section
 ## 2023
 
+### Rust Simple VM (WIP)
+
+Learning more about Rust by building a small 16-bit virtual machine.
+
+* [Source](https://github.com/phy1um/rust-simple-vm/tree/main)
+
 ### Crab Pong
 
 Learning Rust by experimenting with a small web game.
