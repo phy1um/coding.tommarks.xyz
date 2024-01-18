@@ -15,6 +15,8 @@ Learning Rust by experimenting with a small web game.
 * [Source](#)
 * [Try it!](/project/crab_pong)
 
+:::
+
 ::: section
 ## 2022
 
