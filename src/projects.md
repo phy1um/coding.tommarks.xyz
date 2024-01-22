@@ -198,7 +198,8 @@ backend, which was a simple NodeJS app storing data in MongoDB.
 To learn more about lower level programming I dove into C and built
 simple games using the SDL2 library.
 
-* [Source](#)
+* [Shark Game source](project/archive/shark_game.tar.gz)
+* [Little Men source](project/archive/little_men.tar.gz)
 
 ![One of my games, a screen filled with small atari-inspired
 characters](img/2016_cgame1.png)
