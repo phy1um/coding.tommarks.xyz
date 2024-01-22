@@ -1,3 +1,68 @@
+================
+      2024-01-22
+================
+
+----------
+archeology
+----------
+- dug out old C/SDL2 code and updated them to build for Linux
+- for some reason i wrote my own object system in C? it was very cumbersome
+- sources and original win32 binaries (that Just Work tm in wine) are preserved here:
+http://coding.tommarks.xyz/project/archive/little_men.tar.gz
+http://coding.tommarks.xyz/project/archive/shark_game.tar.gz
+- overall thoughts on the code: messy, but consistent. struggled with good
+  data models to represent the state of the world. allocation was dumb.
+  but it mostly WORKED and that is what is important. i forgot how long i spent
+  on this code back in 2016!
+
+================
+      2024-01-19
+================
+
+--------
+simpleVM
+--------
++ macros generate instruction encoding based on types in enum variant
+  - eg: `AddRegister(Register, Register)` - knows to encode 2 registers,
+    `Push(u8)` knows to encode 1 literal. these are all very rigid, and
+    unknown types in an instruction will blow up spectacularly.
+- derive macro errors in compiler are surfaced strangely. i should get tests for this
+- PR from BenMcAvoy: https://github.com/phy1um/rust-simple-vm/pull/1
+  improves my style. was planning on doing this on a stream but it's very good :D
+- had to cut stream eary due to nausea, so decoding is WIP until next stream
+  - but this will follow the same principal
+
+
+================
+      2024-01-16
+================
+
+--------
+simpleVM
+--------
++ macros generate tedious Opcode from-string and to-u8
+  - this is much less error prone than trying to do it by hand!
+  - canonical opcode string representation is now 100% just enum variant name
+- working with rust macros is easier once you embrace the `quote!` DSL
+  - syn docs are pretty good but don't mess with the types by hand too much
+  - rust docs aren't very noisy when a type is part of a feature - this wasted time
+    in my stream!!
+- once i generate instruction encoding and decoding in macros, the opcodes will basically
+  be an internal detail and could be factored out
+
+
+================
+      2024-01-14
+================
+
+--------
+simpleVM
+--------
++ assembler uses instruction names
+- adding new instructions is cumbersome and error prone
+  - feels like macros would solve this :'D
+
+
 
 ================
       2024-01-09

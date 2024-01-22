@@ -1,6 +1,5 @@
 PAGES="contact.md index.md projects.md thanks.md patreon.md tutoring.md"
-PROJECT_FOLDER="src/project"
-BLOG_FILES="src/blog/*.md"
+PROJECT_FOLDER="src/project" BLOG_FILES="src/blog/*.md"
 BLOG_PREFIX="blog-"
 BLOG_TEMPLATE="blog-template.html"
 
@@ -82,7 +81,7 @@ for p in $BLOG_FILES; do
 done
 
 echo "=== Building notes === "
-cd notes && bash build.sh ../notes.txt
+cd notes && bash build.sh ../http/notes.txt
 
 echo
 echo
