@@ -1,4 +1,4 @@
-PAGES="contact.md index.md projects.md thanks.md patreon.md"
+PAGES="contact.md index.md projects.md thanks.md patreon.md tutoring.md"
 PROJECT_FOLDER="src/project"
 BLOG_FILES="src/blog/*.md"
 BLOG_PREFIX="blog-"

@@ -38,6 +38,11 @@ a {
   color: #f49aff;
 }
 
+.biglink {
+  text-align: center;
+  font-size: 1.4em;
+}
+
 subh {
     font-family: "Barlow", serif;
     text-align: center;
