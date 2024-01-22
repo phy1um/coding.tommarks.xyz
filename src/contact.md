@@ -2,7 +2,7 @@
 # Contact
 :::
 
-::: section
+::: .section
 ## Email
 
 coding\@tommarks.xyz

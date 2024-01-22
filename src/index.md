@@ -2,7 +2,7 @@
 # Tom Marks Talks Code
 :::
 
-::: section
+::: .section
 ## about
 
 I'm a programmer/developer in Melbourne, Australia. I work as a Golang
@@ -38,7 +38,7 @@ piano, and I used to play saxophone in highschool, but I haven't owned
 a saxophone in years.
 :::
 
-::: section
+::: .section
 ## website
 
 This website is hand written Markdown run through a simple static site

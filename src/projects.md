@@ -5,7 +5,7 @@ An incomplete list of interesting projects I have worked on since
 childhood
 :::
 
-::: section
+::: {#year-2023 .section}
 ## 2023
 
 ### Rust Simple VM (WIP)
@@ -23,7 +23,7 @@ Learning Rust by experimenting with a small web game.
 
 :::
 
-::: section
+::: {#year-2022 .section}
 ## 2022
 
 ### Pew (a small Playstation 2 game)
@@ -80,7 +80,7 @@ I just need to write a lot of documentation so that other people can use it!
 
 :::
 
-::: section
+::: {#year-2021 .section}
 ## 2021
 
 ### Lisp Game Jam Attempt - Failed Playstation 2 Dungeon Crawler
@@ -132,7 +132,7 @@ however as it isn't really a roguelike I did not submit it to the jam.
 ~Programmer\ art\ in\ full\ swing\ with\ a\ 7\ day\ deadline~
 :::
 
-::: section
+::: {#year-2020 .section}
 ## 2020
 
 ### Lisp Interpreter
@@ -162,7 +162,7 @@ future.
 ~A\ simple\ gameplay\ test\ for\ a\ PlayStation\ 2\ arcade\ shooter~
 :::
 
-::: section
+::: {#year-2019 .section}
 ## 2019
 
 Quake 3 Server Browser API and Discord Bot
@@ -176,7 +176,7 @@ server to use a !command to prompt the bot to report player activity in
 local servers.
 :::
 
-::: section
+::: {#year-2018 .section}
 ## 2018
 
 ### Survey and Data Collection Platform
@@ -190,8 +190,8 @@ question/activity data in Python. I also built the data collection
 backend, which was a simple NodeJS app storing data in MongoDB.
 :::
 
-::: section
-2016
+::: {#year-2016 .section}
+## 2016
 
 ### C Game Experiments
 
@@ -207,7 +207,7 @@ of \'Shark Game\'](img/2016_cgame2.png)
 ~Shark\ Game\ was\ an\ arcade-style\ game\ about\ eating\ fish~
 :::
 
-::: section
+::: {#year-2015 .section}
 ## 2015
 
 ### Music Playlist Generator
@@ -222,7 +222,7 @@ based on song metadata as well as a song's filesystem path. The system
 worked well and was in use years later when I visited the same clinic.
 :::
 
-::: section
+::: {#year-2014 .section}
 ## 2014
 
 ### Card Layout System
@@ -236,7 +236,7 @@ glue together existing solutions with my own small scripts to make a
 larger system.
 :::
 
-::: section
+::: {#year-2013 .section}
 ## 2013
 
 ### Java Games
@@ -250,7 +250,7 @@ of code between projects.
 
 :::
 
-::: section
+::: {#years-old .section}
 ## 2006-2009
 
 ### GameMaker Games

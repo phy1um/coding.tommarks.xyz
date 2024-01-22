@@ -4,6 +4,6 @@
 Ongoing Support
 :::
 
-::: section
+::: .section
 I am currently working on getting this setup, check back soon :)
 :::

@@ -3,7 +3,6 @@
 :::
 
 ::: .section
-
 ## Donators
 A list of awesome people who have donated to me directly.
 
