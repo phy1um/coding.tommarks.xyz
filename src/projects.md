@@ -174,6 +174,8 @@ periodically queried all public Quake 3 servers and exposed their status
 API. I then built a Discord bot which allowed members of my Discord
 server to use a !command to prompt the bot to report player activity in
 local servers.
+
+* [Source (Vaguely wrorking, dependencies out of date)](project/archive/qserver_bot.tar.gz)
 :::
 
 ::: {#year-2018 .section}
