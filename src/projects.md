@@ -27,7 +27,7 @@ Learning more about Rust by building a small 16-bit virtual machine.
 Learning Rust by experimenting with a small web game.
 
 * [Source](#)
-* [Try it!](/project/crab_pong)
+* [Try it!](/project/crab_pong/index.html)
 
 :::
 
