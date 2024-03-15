@@ -8,6 +8,14 @@ childhood
 ::: {#year-2023 .section}
 ## 2023
 
+### 4 Tile Puzzle
+
+Inspired by a wooden puzzle I own, I built a browser-based version of the puzzle.
+This is easy to start, but hard to finish. Hacked out in one HTML file just like
+I would do in the old days. No mobile support (yet).
+
+* [Try it!](/project/4tile_puzzle/index.html)
+
 ### Rust Simple VM (WIP)
 
 Learning more about Rust by building a small 16-bit virtual machine.

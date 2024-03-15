@@ -1,0 +1,350 @@
+<body>
+  <canvas></canvas>
+  <p>4-colour puzzle by <a href="https://coding.tommarks.xyz">Tom Marks</a>. Left click to pick up and place pieces, right click to rotate.
+  Pieces labelled 0 go in light squares, pieces labelled 1 go in dark squares.</p>
+  <script >
+
+function test_edge(a, b) {
+  return a == 0 || a == b;
+}
+
+class Tile {
+  constructor(x, y, values, category) {
+    this.x = x; 
+    this.y = y;
+    this.values = values;
+    this.category = category || 0;
+  }
+
+  rotated() {
+    return new Tile(this.x, this.y, [
+      this.values[1],
+      this.values[2],
+      this.values[3],
+      this.values[0],
+    ], this.category);
+  }
+
+  draw(ctx, w, h, o) {
+    const x = this.x;
+    const y = this.y;
+    const cx = x + (w/2);
+    const cy = y + (h/2);
+    ctx.fillStyle = "#ccc";
+    ctx.fillRect(x, y, w, h);
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x+w, y);
+    ctx.lineTo(cx, cy);
+    ctx.fillStyle = o.cols[this.values[0]-1];  
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x+w, y);
+    ctx.lineTo(x+w, y+h);
+    ctx.lineTo(cx, cy);
+    ctx.fillStyle = o.cols[this.values[1]-1];  
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x+w, y+h);
+    ctx.lineTo(x, y+h);
+    ctx.lineTo(cx, cy);
+    ctx.fillStyle = o.cols[this.values[2]-1];  
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x, y+h);
+    ctx.lineTo(x, y);
+    ctx.lineTo(cx, cy);
+    ctx.fillStyle = o.cols[this.values[3]-1];  
+    ctx.fill();
+
+    ctx.fillStyle="black";
+    ctx.font = "14px sans";
+    ctx.fillText(`${this.category}`, x+(w/2), y+(h/2));
+  }
+}
+
+class Board {
+  constructor(n) {
+    this._n = n;
+    const gridSize = (n+1)*(n+1);
+    this._verts = new Array(gridSize);
+    for (let i = 0; i < gridSize; i++) {
+      // vert[0] = right, vert[1] = down.
+      this._verts[i] = [0,0];
+    }
+    this._categories = new Array(n*n);
+    for (let i = 0; i < this._categories.length; i++) {
+      this._categories[i] = -1;
+    }
+  }
+
+  screenToBoard(x, y, o) { 
+    const xx = x - o.xOffset;
+    const yy = y - o.yOffset;
+    const w = o.width || 400;
+    const h = o.height || 400;
+    if (xx < 0 || xx >= w || yy < 0 || yy >= h) {
+      return undefined;
+    }
+
+    const cellSizeX = w/this._n;
+    const cellSizeY = h/this._n;
+    const gridX = Math.floor(xx/cellSizeX);
+    const gridY = Math.floor(yy/cellSizeY);
+    return [gridX, gridY];
+
+  }
+  
+  canPlace(piece, x, y) {
+    const adj = [
+      this.getVertex(x,y), // up, left
+      this.getVertex(x+1,y), // right
+      this.getVertex(x,y+1), // down
+    ];
+    return test_edge(adj[0][0], piece[0]) // piece up
+      && test_edge(adj[0][1], piece[3]) // piece left
+      && test_edge(adj[1][1], piece[1]) // piece right
+      && test_edge(adj[2][0], piece[2]) // piece down
+      && this._categories[y*this._n + x] == -1;
+
+  }
+
+  getVertex(x, y) {
+    return this._verts[y*(this._n+1) + x];
+  }
+
+  place(piece, x, y, category) {
+    const adj = [
+      this.getVertex(x,y), // up, left
+      this.getVertex(x+1,y), // right
+      this.getVertex(x,y+1), // down
+    ];
+    adj[0][0] = piece[0];
+    adj[0][1] = piece[3];
+    adj[1][1] = piece[1];
+    adj[2][0] = piece[2];
+    this._categories[y*this._n + x] = category;
+  }
+
+  remove(x, y) {
+    const adj = [
+      this.getVertex(x,y), // up, left
+      this.getVertex(x+1,y), // right
+      this.getVertex(x,y+1), // down
+    ];
+    if (this.getTile(x, y-1) === undefined) {
+      adj[0][0] = 0;
+    }
+    if (this.getTile(x-1, y) === undefined) {
+      adj[0][1] = 0;
+    }
+    if (this.getTile(x+1, y) === undefined) {
+      adj[1][1] = 0;
+    }
+    if (this.getTile(x, y+1) === undefined) {
+      adj[2][0] = 0;
+    }
+    this._categories[y*this._n + x] = -1;
+  }
+
+  getPiece(x, y) {
+    const adj = [
+      this.getVertex(x,y), // up, left
+      this.getVertex(x+1,y), // right
+      this.getVertex(x,y+1), // down
+    ];
+    return [
+      adj[0][0],
+      adj[1][1],
+      adj[2][0],
+      adj[0][1],
+    ];
+  }
+  
+  getTile(x, y) {
+    if (x < 0 || y < 0 || x >= this._n || y >= this._n) {
+      return undefined;
+    }
+    const values = this.getPiece(x, y);
+    const sum = values.map(x => x>0?1:0).reduce((a, b) => a+b, 0);
+    if (sum < 4) {
+      return undefined;
+    }
+    const category = this._categories[y*this._n + x];
+    if (category === -1) {
+      return undefined;
+    }
+    return new Tile(0, 0, values, category);
+  }
+}
+
+function draw_board(ctx, board, o) {
+  o = o || {};
+  const w = o.width || 400;
+  const h = o.height || 400;
+  const cellSizeX = w/board._n;
+  const cellSizeY = w/board._n;
+  ctx.fillStyle = "white" || o.bgColour;
+  ctx.fillRect(o.xOffset || 0, o.yOffset || 0, w, h);
+  for (let x = 0; x < board._n; x++) {
+    for (let y = 0; y < board._n; y++) {
+      const ox = (o.xOffset || 0) + (x*cellSizeX);
+      const oy = (o.yOffset || 0) + (y*cellSizeY);
+      if ((x+y) % 2 == 1) {
+        ctx.fillStyle = "#3d3d3d" || o.darkCellColour;
+        ctx.fillRect(ox, oy, cellSizeX, cellSizeY);
+      }
+      const tile = board.getTile(x, y);
+      if (tile === undefined) {
+        continue;
+      }
+      tile.x = ox;
+      tile.y = oy;
+      tile.draw(ctx, cellSizeX, cellSizeY, o)
+    }
+  }
+  ctx.strokeStyle = "black";
+  const ox = o.xOffset || 0
+  const oy = o.yOffset || 0
+  for (let i = 0; i < board._n + 1; i++) {
+    ctx.beginPath();
+    ctx.moveTo(ox + i*cellSizeX, oy);
+    ctx.lineTo(ox + i*cellSizeX, oy + (board._n*cellSizeY));
+    ctx.stroke();
+  }
+  for (let j = 0; j < board._n + 1; j++) {
+    ctx.beginPath();
+    ctx.moveTo(ox, oy + j*cellSizeY);
+    ctx.lineTo(ox + (board._n*cellSizeX), oy + j*cellSizeY);
+    ctx.stroke();
+  }
+}
+
+const b = new Board(5);
+const tiles = [];
+for (let v of [
+      [2,2,4,4],
+      [1,3,3,4],
+      [1,2,1,4],
+      [1,2,2,3],
+      [1,3,4,3],
+      [1,1,4,3],
+      [2,3,3,4],
+      [2,2,3,4],
+      [1,4,2,3],
+      [1,1,4,4],
+      [2,2,3,3],
+      [1,1,3,4],
+      [1,4,2,2] ]) {
+  tiles.push(new Tile(400+(Math.random()*99), 400 + (Math.random()*99), v, 0));
+}
+
+for (let v of [
+    [1,1,2,3],
+    [1,3,4,2],
+    [1,4,2,2],
+    [1,1,4,3],
+    [1,4,4,4],
+    [1,2,3,2],
+    [1,1,3,2],
+    [2,2,3,4],
+    [2,3,4,3],
+    [2,4,4,3],
+    [1,3,4,4],
+    [1,2,3,3],
+]) {
+  tiles.push(new Tile(400+(Math.random()*99), 200 + (Math.random()*99), v, 1));
+}
+
+const canvas = document.querySelector("canvas");
+canvas.width = document.body.clientWidth;
+canvas.height = document.body.clientHeight - 70;
+const x = canvas.getContext('2d');
+const tileWidth = 40;
+
+function hslrot(n, offset) {
+  return Array.from(Array(n).keys()).map(x => `hsl(${((x*90)+offset)%360}deg 80% 50%)`);
+
+}
+
+const opts = {
+    xOffset: 5,
+    yOffset: 5,
+    cols: hslrot(4, Math.floor(Math.random()*8)*10),
+  };
+
+function draw() {
+  x.clearRect(0,0,canvas.width, canvas.height);
+  draw_board(x, b, opts);
+  for (let t of tiles) {
+    t.draw(x, tileWidth, tileWidth, opts);
+  }
+  requestAnimationFrame(draw)
+}
+
+draw();
+
+let selected = -1;
+canvas.addEventListener('mousedown', e => {
+  const {x,y, button} = e;
+  if (button == 2 && selected != -1) {
+    tiles[selected] = tiles[selected].rotated(); 
+    return;
+  }
+  if (button == 0) {
+    const boardPlace = b.screenToBoard(x, y, opts);
+    // if can't place on board, just dump back into the screen
+    if (!boardPlace && selected >= 0) {
+      tiles[selected].x = x-(tileWidth/2);
+      tiles[selected].y = y-(tileWidth/2);
+      selected = -1;
+      return;
+    }
+
+    if (!boardPlace) {
+      for (let i in tiles) {
+        const t = tiles[i];
+        if (x >= t.x && x <= t.x+tileWidth && y >= t.y && y <= t.y+tileWidth) {
+          selected = i;
+          return;
+        }
+      }
+      return;
+    }
+
+    const [gx, gy] = boardPlace;
+    if (selected >= 0 && b.canPlace(tiles[selected].values, gx, gy)) {
+      if ((gx+gy)%2 !== tiles[selected].category) {
+        return; 
+      }
+      b.place(tiles[selected].values, gx, gy, tiles[selected].category);
+      tiles.splice(selected, 1);
+      selected = -1;
+    } else {
+      const tile = b.getTile(gx, gy);
+      if (tile === undefined) {
+        return;
+      }
+      tile.x = gx*tileWidth*2;
+      tile.y = gy*tileWidth*2;
+      tiles.push(tile);
+      selected = tiles.length - 1;
+      b.remove(gx, gy);
+    }
+  }
+});
+
+canvas.addEventListener('mousemove', ({x,y}) => {
+  if (selected >= 0) {
+    tiles[selected].x = x-(tileWidth/2);
+    tiles[selected].y = y-(tileWidth/2);
+  }
+});
+
+document.oncontextmenu = () => false;
+  </script>
+</body>
+
