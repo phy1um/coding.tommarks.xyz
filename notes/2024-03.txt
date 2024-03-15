@@ -1,0 +1,35 @@
+================
+      2024-03-15
+================
+
+back from music festival, back to hacking on random projects.
+in Feb i spent time playing with Bevy, but i haven't been confident
+enough to show anything off yet. soon!
+
+i did some programming in Adelaide last week, so yesterday and today
+has been consolidating that and cleaning up the mess i made coding on
+a plane.
+
+--------
+simpleVM
+--------
++ generated instruction encoding/decoding now works on instruction
+  components (eg Nibble, Register) rather than the entire instruction.
+  this is due to there being more instruction formats now. it isn't as good
+  as it was before, but it's a huge space saver over all of the duplication
+  writing this logic myself. it is messy and prone to breaking, but hopefully
+  this macro stuff will Just Work for a while as i flesh out remaining instructions
++ removed Flags register in favor of a Zero register, which is always Zero and cannot
+  be assigned to. Flags will come back, maybe not as a register
+- considering adding more registers. SP, BP, M and PC are good special purpose registers,
+  but maybe having variants of certain instructions (eg Add) that could operate on 4 other
+  general registers would be better.
+
+  So Add could target: Zero, A, B, C, M, SP, BP, PC
+  but AddX could target: Zero, A, B, C, X, Y, Z, W
+
+  This might be useful for doing stuff, but makes some annoying rules for a higher level
+  language (eg you can jump to address in register A, but not X/Y/Z/W)
+  (where jump-to-address-in-register <=> Add A Zero PC aka PC = A + Zero)
+
+
