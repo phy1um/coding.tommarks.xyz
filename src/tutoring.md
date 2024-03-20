@@ -31,11 +31,11 @@ I can offer:
 ::: section
 ## rates
 
-I am currently charging **$80 AUD** per hour session. If this doesn't work for you, 
+I am currently charging **$60 AUD** per hour session. If this doesn't work for you, 
 please email me to make other arrangements. Payment is accepted through Paypal, but
 other methods can be arranged for people within Australia.
 
-*$80 AUD ~= $52 USD as of Jan 2024. Check the current rate [here](https://www.xe.com/currencyconverter/convert/?Amount=80&From=AUD&To=USD)*
+*$60 AUD ~= $39 USD as of Jan 2024. Check the current rate [here](https://www.xe.com/currencyconverter/convert/?Amount=80&From=AUD&To=USD)*
 :::
 
 ::: biglink
