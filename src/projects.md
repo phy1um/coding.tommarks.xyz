@@ -21,6 +21,7 @@ I would do in the old days. No mobile support (yet).
 Learning more about Rust by building a small 16-bit virtual machine.
 
 * [Source](https://github.com/phy1um/rust-simple-vm/tree/main)
+* [Try it!](/project/2024_rust_vm/index.html)
 
 ### Crab Pong
 
