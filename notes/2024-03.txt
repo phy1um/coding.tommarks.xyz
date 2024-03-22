@@ -1,4 +1,58 @@
 ================
+      2024-03-21
+================
+
+----------------
+bevy experiments
+----------------
++ added game states, moving between a main menu splash screen and game state
+  - added a system to cleanup all entities tagged as being part of game or main menu.
+    this adds overhead to spawning entities but seems sensible? 
++ custom asset loader for getting tilemaps from CSV... but it doens't work
+  - code seems ok, all the paths are getting exercised. even though the asset seems
+    to load the AssetServer never returns it with the appropriate handle
+
+================
+      2024-03-20
+================
+
+--------
+simpleVM
+--------
++ Tidied up the preprocessor, it's now possible to write more meaningful programs
+  in assembly. Still not _nice_, but doable.
++ Many small improvements to the WASM/browser harness to help me visualize what
+  is going on in the machine. This helped me track down a few issues with 
+  generating labels, as I could watch the PC move every VM tick.
++ Added a test display (memory mapped framebuffer) to the WASM/web VM build.
+  Wrote a small fun colourful program: kJEBoQDEHrCzEMBmAbAhFpJAMkAQsFQ2MTASJgbg8JDwEg==
+- Huge documentation cleanup, wow
+- Next step is to write a higher level assembler, which doesn't expose as much of
+  the jank of the ISA. Things like loading a 16bit constant in 1 instruction, instead 
+  of:
+  
+  Imm A $fff
+  ShiftLeft A A 4
+  AddImm A $f
+
+  It would be nice to just have something like: Imm A, $ffff
+
+
+================
+      2024-03-18
+================
+
+--------
+simpleVM
+--------
++ finished improved ISA
++ example of running in the browser/WASM build
++ rather than wrapping everything in wasm_bindgen everywhere, I made a VM struct that 
+  wraps the existing VM type and exposes a different API. Eg, reigsters are accepted as
+  strings rather than some enum, as I don't know how this plays with JS.
+
+
+================
       2024-03-15
 ================
 
