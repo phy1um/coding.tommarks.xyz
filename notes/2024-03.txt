@@ -1,4 +1,69 @@
 ================
+      2024-03-27
+================
+
+----------------
+bevy experiments
+----------------
++ pass arguments in entity spawn commands, eg bullet direction and speed
++ bullets are now sprites instead of mesh boxes
++ tilemap uses new room asset system
++ player can interact with areas on the map and trigger actions
++ hot reload tilemaps
+! entities are not all despawned moving backfrom game to main menu
+- started working on a level script system
+  - level scripts are loaded with entities etc and associated with a key
+  - simple "block" scripting of actions, simple action chaining
+  - every block has a "chain" slot, which may either be another action string, or nothing
+  - "fork" block to split execution
+  - test blocks that only chains if a condition is met
+- need to support some generic key/value store system
+  - 2 scopes, global and local (room). local for things like if a door has been unlocked.
+    global for bigger state like progression (maybe?)
+- levels should be loaded and saved from RON, or maybe RON+tiled CSV(/b64). unclear, depends on
+  what ingame editor i build
+
+================
+      2024-03-26
+================
+
+----------------
+bevy experiments
+----------------
++ added main menu, rendering bitmap text, cursor
+  - some issue with mesh-based rendering, maybe a driver issue? some flicker.
+    appears in desktop and wasm builds, need to test on more HW
++ reworked asset/room loading. entities now spawned centrally. structs for
+  entity spawn commands, with a mind to serialize them so that entity/level defs
+  can be assets rather than code.
+- renamed this project to ROBOSHOOT as a working title. real name TBA
+
+
+================
+      2024-03-25
+================
+
+--------
+simpleVM
+--------
++ add memory device that calls JS code on read/write
+  + re-implement html canvas screen using this, no longer relies on reading fixed
+    memory address in VM
++ add memory device that maps to a Vec<u8>. map the program into memory directly
+  instead of copying when running VM binary.
+
+
+================
+      2024-03-24
+================
+
+--------
+simpleVM
+--------
++ virtual memory, you now map things into a virtual memory space
+
+
+================
       2024-03-21
 ================
 
