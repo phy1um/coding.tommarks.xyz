@@ -5,8 +5,15 @@ An incomplete list of interesting projects I have worked on since
 childhood
 :::
 
-::: {#year-2023 .section}
-## 2023
+::: {#year-2024 .section}
+## 2024
+
+### ROBOSHOOT (working title)
+
+Experimenting with the Bevy game engine in Rust by building a Megaman inspired
+roguelite.
+
+* [Latest Showcase](https://youtu.be/adKxmsKksU4)
 
 ### 4 Tile Puzzle
 
@@ -15,6 +22,11 @@ This is easy to start, but hard to finish. Hacked out in one HTML file just like
 I would do in the old days. No mobile support (yet).
 
 * [Try it!](/project/4tile_puzzle/index.html)
+
+:::
+
+::: {#year-2023 .section}
+## 2023
 
 ### Rust Simple VM (WIP)
 
