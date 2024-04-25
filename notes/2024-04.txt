@@ -48,6 +48,60 @@ bevy game: ROBOSHOOT
 - simplify entity spawning
   doing stuff from external files is too complciated, just write it all in rust?
 
+================
+      2024-04-15
+================
 
+------
+khtool
+------
+- everything works, generating patched KHFM binaries from golang cli
+  - add system for applying binary patches, add Makefile scripts for assembling (using gas)
+    binary patches in the `patch_src` directory. also apply .img based patches to be compatible
+    with the existing cutscene skip patch.
+  - consoled verified, working!
+- improve logging, allow logging to file
+
+================
+      2024-04-14
+================
+
+------
+khtool
+------
+- same as yesterday, still not writing section and program headers correctly
+  - serializing a struct directly into bytes worked, i was doing each field manually
+    before. the stdlib `binary` package is very useful!
+
+
+================
+      2024-04-13
+================
+
+------
+khtool
+------
+- porting ELF patching from python to go, everything is broken
+
+
+================
+      2024-04-11
+================
+
+------
+khtool
+------
+- add file filter when repacking ISO files
+- add CLI for updating an ISO index entry size
+
+
+================
+      2024-04-05
+================
+
+------
+khtool
+------
+- add scripts for patching kingdom hearts binary with injected code
 
 
