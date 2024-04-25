@@ -1,0 +1,53 @@
+================
+      2024-04-25
+================
+
+--------------------
+bevy game: ROBOSHOOT
+--------------------
+- finish big refactor, remove all `use crate::*`!
+- add Detectors component, where each detector is "active" if its offset hits the tilemap
+  - this allows Walker enemies to find walls and the edges of platforms
+* entity v entity collisions now use the correct AABB offset from their origin
+
+================
+      2024-04-23
+================
+
+--------------------
+bevy game: ROBOSHOOT
+--------------------
+- finish entity spawning refactor
+- add Walker entity type that paces back and forward (maybe)
+- start huge refactor to make what each mod exports smarter
+
+
+================
+      2024-04-21
+================
+
+--------
+simpleVM
+--------
+- encoding/decoding macro uses proc_macro2 and i can run unit tests now
+- refactor macro crate, keep lib.rs minimal
+
+
+
+================
+      2024-04-18
+================
+
+fell behind on taking notes. entered a hackathon for mlai.au, competing
+with a friend to write an algorithm that trades on a simulated energy grid
+using real world data. we win prizes based on how well our bot performs.
+
+--------------------
+bevy game: ROBOSHOOT
+--------------------
+- simplify entity spawning
+  doing stuff from external files is too complciated, just write it all in rust?
+
+
+
+
