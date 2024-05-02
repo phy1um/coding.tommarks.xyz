@@ -1,0 +1,43 @@
+================
+      2024-05-02
+================
+
+--------------------
+bevy game: ROBOSHOOT
+--------------------
++ add horizontal dashing when double tapping left/right
+  - unsure how much to clamp/limit V speed
+  - maybe this should be uncapped? just let people fly up
+  - but that makes up dashing less useful
+  - horizontal down dashing is _really_ cool though
+  - only dash once in air, but reset on walljump
+* player uses moving sprite when in air
+! player maintains momentum when hitting head while dashing
+* camera moves up and down
+* tilemap no longer spawns at random (-128, -128) offset, put it at (0, 0)
+- where do camera bounds live? should this be in a resource? then it would be
+  easier to set with room scripts
+* camera focuses ahead of where the player is facing by a small offset
+
+--------
+P2GARAGE
+--------
+* fix VIFCode alignment with DMATags, start after 8bytes instead of 16
+! still no output to screen :(
+
+================
+      2024-05-01
+================
+
+--------------------
+bevy game: ROBOSHOOT
+--------------------
+* add walljump 
+  - speed based on current veritical speed
+  - more vspeed => less hspeed
+  - but vspeed is clamped to a limited range, walljumps always have +ve vspeed
+  - walljumps slamming you into the earth sucks
+- unsure if dash/walljump should have fixed vspeed or be based on player state
+  - maybe current system based on existing vspeed is too inconsistent?
+- the player is accumulating a lot of state, but i guess that is expected..
+

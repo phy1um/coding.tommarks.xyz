@@ -1,4 +1,16 @@
 ================
+      2024-04-29
+================
+
+--------------------
+bevy game: ROBOSHOOT
+--------------------
+* player has variable jump height
+  - not sure if the arc feels right, but it works
+  - idea for future: jet boots which lower jump speed but
+    raise the max jump timer massively
+
+================
       2024-04-25
 ================
 
