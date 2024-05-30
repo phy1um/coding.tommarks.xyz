@@ -1,4 +1,23 @@
 ================
+      2024-05-03
+================
+
+--------
+P2GARAGE
+--------
+* unfix VIFCode alignment. underlying refactor is still good, but the VIF packet does not 
+  start where I thought it did unless the DMA transfer _includes_ the DMATag
+* do not DMA wait at the start of a frame, this was hanging
+* correct QWC for DIRECT VIFCode, so we can now transfer data to GIF via VIF and render stuff!
+! TODO: cleanup makefiles, they are annoying. change it to not rebuild Lua all the time!!!
+
+--------------------
+bevy game: ROBOSHOOT
+--------------------
+* fixup positions of entities for new tilemap alignment
+* move camera bounds to room settings, can be configured in scripts
+
+================
       2024-05-02
 ================
 
