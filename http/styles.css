@@ -38,6 +38,15 @@ a {
   color: #f49aff;
 }
 
+image {
+  max-width: 90%;
+}
+
+pre {
+  max-width: 95%;
+  overflow-x: scroll;
+}
+
 .biglink {
   text-align: center;
   font-size: 1.4em;
