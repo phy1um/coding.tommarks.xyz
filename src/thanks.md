@@ -9,6 +9,7 @@ A list of awesome people who have donated to me directly.
 - eatfrog
 - mrkotfw
 - More11o
+- [strager](https://github.com/strager)
 
 [Your name here?](https://ko-fi.com/tommarkstalkscode)
 
