@@ -1,0 +1,32 @@
+
+================
+      2024-10-23
+================
+
+oops, didn't do one of these for a while. oh boy... it's too much to
+catch up everything so I'll just keep going as if I never stopped :D
+
+thinking of applying for fulltime (or 4 day/week) jobs again. but also
+taught my first flute student in ages today and enjoying being an educator.
+
+--------
+P2GARAGE
+--------
+* use big blocks when uploading textures. I hacked a magic cap in to work
+  around my VRAM bugs months ago, but those VRAM bugs were fixed. this big
+  block change fixed some subtle texture issues.
+- i need APIs for setting ztest and atest methods. this won't be hard.
+
+----------------------
+ps2 game: SIDESCROLLER
+----------------------
+! rendering glitch is due to Z buffer corruption. setting ZTEST
+  to always pass removed blank patch on screen. thanks refraction from
+  PCSX2 for hanging out on my stream for an hour troubleshooting!
+! still have not fixed aspec ration weirdness, everything is too tall :(
+
+--------------
+site generator
+--------------
+* support draft articles
+
