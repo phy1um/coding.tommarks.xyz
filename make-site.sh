@@ -57,7 +57,7 @@ for p in $PAGES; do
     base=$(basename $p .md)
     tgt="$base.html"
     echo " > Pandoc $p -> $tgt"
-    pandoc -f markdown -t html "src/$p" > "src/$tgt"
+    pandoc -f markdown+footnotes -t html "src/$p" > "src/$tgt"
     echo " > Building page: $tgt"
     make_page "src/$tgt" > "http/$tgt"
     rm -f "src/$tgt"
