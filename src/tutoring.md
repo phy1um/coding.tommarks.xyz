@@ -11,8 +11,9 @@
 
 I am an experienced programmer with 5+ years of industry experience. I love 
 to talk about code, and help people explore new technologies. I started
-livestreaming to share my coding knowledge with the world in 2021, and have
-been teaching several friends how to program.
+livestreaming to share my coding knowledge with the world in 2021, and I've
+worked as a maths, programming and music tutor since 2024. I do 1-1 tutoring
+as well as delivering programs to classes in schools.
 
 I have worked in Python, Java, Golang and Javascript. I have experience
 with Bash scripting and common Linux utilities. I have also written Rust,
@@ -31,11 +32,11 @@ I can offer:
 ::: section
 ## rates
 
-I am currently charging **$60 AUD** per hour session. If this doesn't work for you, 
+I am currently charging **$50 AUD** per hour session. If this doesn't work for you, 
 please email me to make other arrangements. Payment is accepted through Paypal, but
 other methods can be arranged for people within Australia.
 
-*$60 AUD ~= $39 USD as of Jan 2024. Check the current rate [here](https://www.xe.com/currencyconverter/convert/?Amount=80&From=AUD&To=USD)*
+*$50 AUD ~= $33 USD as of Oct 2024. Check the current rate [here](https://www.xe.com/currencyconverter/convert/?Amount=50&From=AUD&To=USD)*
 :::
 
 ::: biglink
