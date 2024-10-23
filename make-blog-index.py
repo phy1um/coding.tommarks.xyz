@@ -1,6 +1,7 @@
 import types
 import sys
 import datetime
+import os
 
 import rss
 
@@ -42,14 +43,22 @@ blog_prefix = sys.argv[1]
 rss_meta_lines = read_fm("rssmeta.md")
 m = types.SimpleNamespace(**parse_fm(rss_meta_lines))
 feed = rss.Channel(m.title, m.link, m.about, m.owner, m.founded, m.email)
+show_drafts = os.getenv("INDEX_DRAFTS", "no") != "no"
 
 with open(target, "w") as f:
     f.write("<section><h1>Blog Index</h1></section><section><ul>")
     for post in sorted(posts, key=lambda x: x["date"], reverse=True):
+        is_draft = 'draft' in post and post['draft'] == "true"
+        if not show_drafts and is_draft:
+            print(f"skipping post {post['title']}")
+            continue
         path_t = post['path'].split("/")[-1]
         name = path_t.split(".")[0]
         prefixed_name = blog_prefix + name + ".html"
-        f.write("".join(["<li>(",post['date'],") <a href='",prefixed_name,"'>",post['title'],"</a></li>"]))
+        title = post['title']
+        if is_draft:
+            title = title + " (DRAFT)"
+        f.write("".join(["<li>(",post['date'],") <a href='",prefixed_name,"'>",title,"</a></li>"]))
         about = ""
         try:
             about = post['about']
