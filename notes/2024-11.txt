@@ -1,0 +1,40 @@
+
+================
+      2024-11-09
+================
+
+oh man doing this regularly is hard apparently :D
+
+here is a bit of a stopgap update to fill in since the previous entry, not all
+of this was one day...
+
+----------------------
+ps2 game: SIDESCROLLER
+----------------------
+* fixed framebuffer sizes. interlaced signals still need a fullsize (eg 640*448)
+  framebuffer! this is different to what i expected from how interlacing works.
+  refraction says i should still double buffer to avoid tearing, so maybe
+  supporting 480p DTV is worthwhile too.
++ added "WAD" files, which are inspired by the index that Kingdom Hearts uses
+  for looking up the block that files reside in on a disk. I am using this
+  over the network for now but i would like it to support disks too.
+  i would like to promote this to the P2GARAGE library one day.
++ added IO apis to wrap WAD. maybe i actually don't want to load from a WAD
+  sometimes, if i'm doing lots of hot reloading. but i suspect it will perform
+  better over the network (ps2client) even though this is anecdotal for now
++ added a Linux build, so that i can run it in valgrind and find memory issues
+* fixed many memory issues :D
++ added a binary level file format, and a tool to build that format from JSON.
+  next step is exporting JSON from the LDTK editor and adapting the scripts to that.
+! the game crashes on hardware (but not emulator or simulator) due to bad VADDR ~= 0x173700.
+  this addr comes right from `callloc()` so i have no idea what is going on there, it feels
+  like where calloc should be putting things :(
+
+--------
+simpleVM
+--------
+* finished the big register optimization refactor 
++ PC no longer a normal register, new Jump/Branch instructions.
+  this reclaims a whole register, now named "D". 
++ build lang for WASM with compiler bindings
+
