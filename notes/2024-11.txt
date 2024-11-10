@@ -1,3 +1,24 @@
+================
+      2024-11-10
+================
+
+----------------------
+ps2 game: SIDESCROLLER
+----------------------
+* word-align level allocator to fix bad writes
++ compile LDTK file into .ps2lvl files
+  + read LDTK tilemap paths for resources needed in level
+  + use world positon of individual levels
+- next steps:
+  1. a task system (for async io to avoid stalls)
+  2. an event passing system (decouple some function calls/timings).
+     this will enable reloading assets more effectively!
+  3. entity/decoration system, more complex asset loading
+
+--------
+p2garage
+--------
+* check texture sizes before uploading to resolve divide by 0
 
 ================
       2024-11-09
