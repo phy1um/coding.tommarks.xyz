@@ -1,4 +1,22 @@
 ================
+      2024-11-12
+================
+
+(includes work from 2024-11-11)
+
+----------------------
+ps2 game: SIDESCROLLER
+----------------------
++ Load "trigger areas" from LDTK
+  - these areas do things eg load another level when the player
+    in inside
+  - level load triggers need to check if the desired level is already loaded!
++ better active level tracking/inactive level recycling based on player position
++ levels calculate bounds from tilemaps, used for active/inactive
+  ! player could be in many levels at once!
+! game freezes when too many tiles on screen :o
+
+================
       2024-11-10
 ================
 
