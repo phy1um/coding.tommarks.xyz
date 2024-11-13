@@ -1,4 +1,26 @@
 ================
+      2024-11-13
+================
+
+----------------------
+ps2 game: SIDESCROLLER
+----------------------
++ load decorations from LDTK
+  - LDTK kind of forces us to define an entity class for each decoration,
+    and a tileset for each image we use. this is ok, just cumbersome 
++ load many maps per .ps2lvl according to LDTK "layers". use interfaces for
+  draw and collision test.
++ LDTK will include every layer in every level, so add a check for "empty"
+  tile layers
+  - make sure we check if a layer is non-empty before including its assets in that
+    level!!
++ hot reload all levels with context method, even on hardware
+  - this is really cool :D
+
+this is coming together more, it would be nice to have real art...
+
+
+================
       2024-11-12
 ================
 
