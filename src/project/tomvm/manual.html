@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TomVM Docs</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="manual.css">
+<script src="toc.js"></script>
+<style>
+  body{
+    margin:40px auto;
+    max-width:1050px;
+    line-height:1.6;
+    font-size:18px;
+    color:#444;
+    padding:0 10px;
+    font-family: "Arial";
+  }
+
+  .funfont {
+    font-family: "CutiveMono";
+  }
+
+  h1,h2,h3{line-height:1.2}
+</style>
+</head>
+
+<body class="funfont">
+  <h1>TomVM User Manual</h1>
+  <button onclick="toggleFunFont()">fun font toggle</button>
+  <p><em>Note: this document is still a WIP. Do not read yet unless I told you to!</em></p>
+  <nav>
+  </nav>
+  </section>
+  <section>
+    <h2>Features</h2>
+    <p>
+      <ul>
+        <li>8x 16bit General Purpose Registers</li>
+        <li>32bit Address Space</li>
+        <li>8KB of RAM, with options for expansion</li>
+        <li>Lightning fast memory-mapped device I/O</li>
+      </ul>
+    </p>
+  </section>
+
+  <section>
+    <h2>Instructions</h2>
+    <table id="opstable">
+      <thead>
+        <tr>
+          <th scope="col">Opname</th>
+          <th scope="col">Usage</th>
+          <th scope="col">Restrictions</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tr>
+        <th scope="row">IMM</th>
+        <td>IMM R, i</td>
+        <td>0 &lt;= <em>i</em> &lt;= 4095</td>
+        <td>Set reigster <b>R</b> to immediate value <em>i</em></td>
+      </tr>
+      <tr>
+        <th scope="row">ADDIMM</td>
+        <td>ADDIMM R, i</td>
+        <td>0 &lt;= <em>i</em> &lt;= 127</td>
+        <td>Add unsigned immediate value <em>i</em> to register <b>R</b></td>
+      </tr>
+      <tr>
+        <th scope="row">ADDIMMS</td>
+        <td>ADDIMMS R, i</td>
+        <td>-64 &lt;= <em>i</em> &lt;= 63</td>
+        <td>Add unsigned immediate value <em>i</em> to register <b>R</b></td>
+      </tr>
+
+      <tr>
+        <th scope="row">ADD</td>
+        <td>ADD TGT, A, B</td>
+        <td></td>
+        <td>Add values in registers <b>A</b> and <b>B</b>, store result in register <b>TGT</b></td>
+      </tr>
+      <tr>
+        <th scope="row">SUB</td>
+        <td>SUB TGT, A, B</td>
+        <td></td>
+        <td>Subtract values in registers <b>B</b> from register <b>A</b>, store result in register <b>TGT</b></td>
+      </tr>
+      <tr>
+        <th scope="row">MUL</td>
+        <td>MUL TGT, A, B</td>
+        <td></td>
+        <td>Multiply values in registers <b>A</b> and <b>B</b>, store result in register <b>TGT</b></td>
+      </tr>
+      <tr>
+        <th scope="row">AND</td>
+        <td>AND TGT, A, B</td>
+        <td></td>
+        <td>Perform logical AND on values in registers <b>A</b> and <b>B</b>, store result in register <b>TGT</b></td>
+      </tr>
+      <tr>
+        <th scope="row">OR</td>
+        <td>OR TGT, A, B</td>
+        <td></td>
+        <td>Perform logical OR on values in registers <b>A</b> and <b>B</b>, store result in register <b>TGT</b></td>
+      </tr>
+      <tr>
+        <th scope="row">XOR</td>
+        <td>XOR TGT, A, B</td>
+        <td></td>
+        <td>Perform logical XOR on values in registers <b>A</b> and <b>B</b>, store result in register <b>TGT</b></td>
+      </tr>
+      <tr>
+        <th scope="row">MOD</td>
+        <td>MOD TGT, A, B</td>
+        <td></td>
+        <td>Calculate the value in register <b>A</b> modulo the value in register <b>B</b>, store result in register <b>TGT</b></td>
+      </tr>
+      <tr>
+        <th scope="row">SHIFTL</td>
+        <td>SHIFTL TGT, R, i</td>
+        <td>0 &lt;= i &lt;= 15</td>
+        <td>Shift the value in register <b>R</b> left by <em>i</em> bits, store result in register <b>TGT</b></td>
+      </tr>
+      <tr>
+        <th scope="row">SHIFTRG </td>
+        <td>SHIFTRG TGT, R, i</td>
+        <td>0 &lt;= i &lt;= 15</td>
+        <td>Shift the value in register <b>R</b> right by <em>i</em> bits, store result in register <b>TGT</b></td>
+      </tr>
+      <tr>
+        <th scope="row">SHIFTRA</td>
+        <td>SHIFTRA TGT, R, i</td>
+        <td>0 &lt;= i &lt;= 15</td>
+        <td>Shift the value in register <b>R</b> right by <em>i</em> bits, store result in register <b>TGT</b>.
+          if the high bit of register <b>R</b> is set, then it is sign extended.</td>
+      </tr>
+      <tr>
+        <th scope="row">LOADWORD</td>
+        <td>LOADWORD TGT, A, M</td>
+        <td></td>
+        <td>Load a word from memory at the 32-bit address taken by combining the value of registers <b>A</b> and <b>M</b>,
+          where <b>M</b> is treated as bits 31-16 and <b>A</b> is treated as bits 15-0. Store result in register <b>TGT</b></td>
+      </tr>
+       <tr>
+        <th scope="row">STOREWORD</td>
+        <td>STOREWORD V, A, M</td>
+        <td></td>
+        <td>Store the value of register <b>V</b> in memory at the 32-bit address taken by combining the value of registers <b>A</b> and <b>M</b>,
+          where <b>M</b> is treated as bits 31-16 and <b>A</b> is treated as bits 15-0</td>
+      </tr>
+      <tr>
+        <th scope="row">LOADBYTE</td>
+        <td>LOADBYTE TGT, A, M</td>
+        <td></td>
+        <td>Load a byte from memory at the 32-bit address taken by combining the value of registers <b>A</b> and <b>M</b>,
+          where <b>M</b> is treated as bits 31-16 and <b>A</b> is treated as bits 15-0. Store result in register <b>TGT</b>.
+          This always sets the upper 8-bits of register <b>TGT</b> to zero.</td>
+      </tr>
+       <tr>
+        <th scope="row">STOREBYTE</td>
+        <td>STOREBYTE V, A, M</td>
+        <td></td>
+        <td>Store the lower 8-bits of the value of register <b>V</b> in memory at the 32-bit address taken by combining the value of registers <b>A</b> and <b>M</b>,
+          where <b>M</b> is treated as bits 31-16 and <b>A</b> is treated as bits 15-0</td>
+      </tr>
+      <tr>
+        <th scope="row">TEST</td>
+        <td>TEST A, B, T</td>
+        <td></td>
+        <td>Perform a testop <b>T</b> on the values of registers <b>A</b> and <b>B</b>. If the testop passes, set the 
+          TEST flag to 1. See <a href="#section-testops">TestOps</a> for a list of all valid testops.</td>
+      </tr>
+    </table>
+    <section>
+      <h3>TestOps</h3>
+      <p>TestOps perform a comparison between two registers. The result of a TestOp is used to set the TEST flag
+      of the processor. If the condition is true then the flag is set, otherwise it is unset. Every <b>TEST</b>
+      instruction operates on 2 register operands, in this table referred to as A and B.
+      </p>
+      <table class="testoptable">
+        <thead>
+          <th scope="col">Name</th>
+          <th scope="col">Condition</th>
+        </thead>
+        <tr>
+          <th scope="row">Eq</th>
+          <td>A == B</td>
+        </tr>
+        <tr>
+          <th scope="row">Neq</th>
+          <td>A != B</td>
+        </tr>
+        <tr>
+          <th scope="row">Lt</th>
+          <td>A &lt; B</td>
+        </tr>
+        <tr>
+          <th scope="row">Lte</th>
+          <td>A &lt;= B</td>
+        </tr>
+        <tr>
+          <th scope="row">Gt</th>
+          <td>A &gt; B</td>
+        </tr>
+        <tr>
+          <th scope="row">Gte</th>
+          <td>A &gt;= B</td>
+        </tr>        
+        <tr>
+          <th scope="row">BothZero</th>
+          <td>A == B &amp;&amp; A == 0</td>
+        </tr>
+        <tr>
+          <th scope="row">EitherNonZero</th>
+          <td>A != 0 || B != 0</td>
+        </tr>
+        <tr>
+          <th scope="row">BothNonZero</th>
+          <td>A != 0 &amp;&amp; B != 0</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h3>StackOps</h3>
+      <p>
+      StackOps are the stack manipulation operations that the <b>STACK</b> instruction
+      performs. Each stackop operates on 2 registers, which are operands of the <b>STACK</b>
+      instruction. In the instruction <b>STACK TGT SP OP</b> these register values represent
+      the target of the operation, and the <b>SP</b> or "stack pointer" - this is the the address 
+      the machine's memory where the stack operation is performed. This means that multiple stacks can be operated on,
+      and their values can reside in any general purpose register. This machine <em>does not use 
+        a dedicated register for the value of the stack pointer</em>, however by convention
+      the register <b>R5</b> is used as the stack pointer, and it is given the name <b>SP</b> in the assembler.
+      </p>
+      <table class="stackoptable">
+        <thead>
+          <th scope="col">StackOp</th>
+          <th scope="col">Action</th>
+        </thead>
+        <tr>
+          <th scope="row">Pop</th>
+          <td>SP -= 2; TGT = MEM[SP]</td>
+        </tr>
+        <tr>
+          <th scope="row">Push</th>
+          <td>MEM[SP] = TGT; SP += 2</td>
+        </tr>
+        <tr>
+          <th scope="row">Peep</th>
+          <td>TGT = MEM[SP-2]</td>
+        </tr>
+        <tr>
+          <th scope="row">Swap</th>
+          <td>tmp = MEM[SP-2]; MEM[SP-2] = MEM[SP-4]; MEP[SP-4] = tmp</td>
+        </tr>
+        <tr>
+          <th scope="row">Dup</th>
+          <td>MEM[SP] = MEM[SP-2]; SP += 2</td>
+        </tr>
+      </table>
+    </section>
+  </section>
+
+  <section>
+    <h2>Assembler Syntax</h2>
+    The program TVM-ASM assembles programs for the machine, and outputs files in the <a href="#section-binary-format">SBF</a>
+    format.
+  </section>
+
+  <section>
+    <h2>Binary Format</h2>
+    This machine defines its own binary format, SBF (simple binary format) for loading programs and data. These files follow
+    a simple specification one main header followed by <i>section</i> headers, the finally the data referenced by each
+    section header.
+
+    <section>
+      <h3>Binary Header</h3>
+      The main header contains the following fields, in order:
+      <ul>
+        <li>Version (2 bytes)</li>
+        <li>Entrypoint (2 bytes) - note the entrypoint must be in the first ~65kb of memory</li>
+        <li>Hardware Configuration (4 bytes) - the expected hardware this binary wants to run against</li>
+        <li>Section count (2 bytes)</li>
+        <li>Reserved space (12 bytes)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Section Header</h3>
+      The section headers are immediately following the main binary header. Each section header defines
+      data that will become part of main memory, or some information for the loader to configure memory.
+    </section>
+  </section>
+
+
+
+  <script>
+    const nav = document.getElementsByTagName("nav")[0];
+    populateTOC(nav);
+    function toggleFunFont() {
+      if (document.body.classList.contains("funfont")) {
+        document.body.classList.remove("funfont");
+      } else {
+        document.body.classList.add("funfont");
+      }
+    }
+  </script>
+</body>
+</html>
