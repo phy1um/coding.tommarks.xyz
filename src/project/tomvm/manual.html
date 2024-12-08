@@ -261,6 +261,22 @@
           <th scope="row">Dup</th>
           <td>MEM[SP] = MEM[SP-2]; SP += 2</td>
         </tr>
+        <tr>
+          <th scope="row">Rot</th>
+          <td>tmp = MEM[SP-2]; MEM[SP-2] = MEM[SP-4]; MEM[SP-4] = MEM[SP-6]; MEM[SP-6] = tmp</td>
+        </tr>
+        <tr>
+          <th scope="row">Add</th>
+          <td>MEM[SP-4] = MEM[SP-2] + MEM[SP-4]; SP -= 2</td>
+        </tr>
+        <tr>
+          <th scope="row">Sub</th>
+          <td>MEM[SP-4] = MEM[SP-4] - MEM[SP-2]; SP -= 2</td>
+        </tr>
+        <tr>
+          <th scope="row">PushPC</th>
+          <td>MEM[SP] = PC; SP += 2</td>
+        </tr>
       </table>
     </section>
   </section>
@@ -291,12 +307,77 @@
 
     <section>
       <h3>Section Header</h3>
-      The section headers are immediately following the main binary header. Each section header defines
-      data that will become part of main memory, or some information for the loader to configure memory.
+      The section headers immediately follow the main binary header. Each section header defines
+      data that will loaded into memory, or some information for the loader to configure memory.
+      The total size of the section headers is 12 bytes × section count. Each section header 
+      contains the following fields, in order:
+
+      <ul>
+        <li>Size (2 bytes) - number of bytes in this section</li>
+        <li>Mode (2 bytes) - one of the <a href="#section-section-modes">section modes</a></li>
+        <li>Address (4 bytes) - target address in memory</li>
+        <li>File offset (4 bytes) - offset of the start of the section data in the binary file</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Section Modes</h3>
+      Each section has a mode which determines how it is handled by the loader.
+
+      <ul>
+        <li>RO (0) - this data is mapped read only, and causes a fault if written to</li>
+        <li>RW (1) - this data can be read and written to in memory</li>
+        <li>Heap (2) - tells the loader to map a region of memory for general use by the program. File offest is ignored, 
+          the range specified by [address, address+size] is 0-initialized.</li>
+      </ul>
     </section>
   </section>
 
+  <section>
+    <h2>System Signals</h2>
+    The <b>SIGNAL</b> instruction raises a signal that must be handled by the system. These signals can
+    interface with hardware that is not exposed through regular instructions.
 
+    <table class="signals">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Arg</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>$01</td>
+        <td>INTERRUPT</td>
+        <td>interrupt value</td>
+        <td>Trigger a user interrupt, jump to the interrupt handler vector, indexed by the interrupt value</td>
+      </tr>
+      <tr>
+        <td>$02</td>
+        <td>SET INTERRUPT ENABLED</td>
+        <td>true/false</td>
+        <td>If arg is 1, enable user interrupts. Otherwise, disable user interrupts</td>
+      <tr>
+        <td>$0A</td>
+        <td>SET FAULT HANDLER</td>
+        <td>address</td>
+        <td>When a system fault occurs, setup a <a href="#section-fault">fault context</a> and jump to the handler address.</td>
+      </tr>
+      <tr>
+        <td>$0B</td>
+        <td>SET INT VECTOR</td>
+        <td>address</td>
+        <td>When a system interrupt is triggered, setup a <a href="#section-interrupt">interrupt context</a> and jump to the handler address.</td>
+      </tr>
+      <tr>
+        <td>$0F</td>
+        <td>HALT</td>
+        <td>(ignored)</td>
+        <td>Set the HALT status of the system to true. This ends execution.</td>
+      </tr>
+    </table>
+  </section>
 
   <script>
     const nav = document.getElementsByTagName("nav")[0];
