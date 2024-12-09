@@ -1,5 +1,6 @@
 PAGES="contact.md index.md projects.md thanks.md patreon.md tutoring.md"
-PROJECT_FOLDER="src/project" BLOG_FILES="src/blog/*.md"
+PROJECT_FOLDER="src/project" 
+BLOG_FILES="src/blog/*.md"
 BLOG_PREFIX="blog-"
 BLOG_TEMPLATE="blog-template.html"
 
@@ -63,8 +64,14 @@ for p in $PAGES; do
     rm -f "src/$tgt"
 done
 
+echo " === Vendoring Project Docs (TomVM) ==="
+git clone https://github.com/phy1um/rust-simple-vm vendor-tomvm
+mkdir "${PROJECT_FOLDER}/tomvm"
+cp -r vendor-tomvm/docs/html/* "${PROJECT_FOLDER}/tomvm"
+
 echo " === Copying Projects (static pages) ==="
 cp -r ${PROJECT_FOLDER} "http"
+
 
 echo " > Building page: blog.html"
 make_page "src/blog.html" > "http/blog.html"
