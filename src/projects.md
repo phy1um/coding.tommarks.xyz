@@ -8,6 +8,14 @@ childhood
 ::: {#year-2024 .section}
 ## 2024
 
+### TomVM (with Exercises)
+
+Improvements to my Rust VM and assembler, now with a full C-like programming language.
+This website has a series of exercises to introduce the VM and assembler (wip).
+
+* [TomVM Playground](/project/tomvm/index.html)
+* [TomVM Docs](/project/tomvm/manual.html)
+
 ### ROBOSHOOT (working title)
 
 Experimenting with the Bevy game engine in Rust by building a Megaman inspired
