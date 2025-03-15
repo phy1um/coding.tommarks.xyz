@@ -3,10 +3,6 @@
 :::
 
 ::: .section
-I am now offering [tutoring](tutoring.html)!
-:::
-
-::: .section
 ## about
 
 I'm a programmer/developer in Melbourne, Australia. I work as a Golang
